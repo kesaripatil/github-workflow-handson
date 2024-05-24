@@ -1,0 +1,23 @@
+name: needs_poc
+on: push
+jobs:
+  job1:
+    name: first-job
+    runs-on: ubuntu-latest
+    steps:
+      - name: print date in ubuntu
+        run: date
+  job2:
+    name: second-job
+    runs-on: windows-latest
+    steps:
+      - name: print date in windows
+        run: date
+
+  job3:
+    name: third-job
+    needs: [first-job, second-job]
+    runs-on: macos-latest
+    steps:
+      - name: print date in macos
+        run: date
