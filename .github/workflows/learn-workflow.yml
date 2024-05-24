@@ -1,13 +1,19 @@
-name: learn-workflows
-run-name: ${{ github.actor }} is learning GitHub Actions
-on: [push]
+name: learn-workflow
+on: push
 jobs:
-  check-bats-version:
+  job1:
+    name: first-job
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-      - run: npm install -g bats
-      - run: bats -v
+      - name: first step in first job
+        uses: actions/checkout@v2
+      - name: second step in first job
+        run: echo "hello world"
+  job2:
+    name: second-job
+    runs-on: windows-latest
+    steps:
+      - name: first step in second job
+        uses: actions/checkout@v2
+      - name: second step in second job
+        run: ls
