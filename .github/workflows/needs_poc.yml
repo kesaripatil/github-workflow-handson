@@ -16,7 +16,7 @@ jobs:
 
   job3:
     name: third-job
-    needs: [first-job, second-job]
+    needs: [job1, job2]
     runs-on: macos-latest
     steps:
       - name: print date in macos
