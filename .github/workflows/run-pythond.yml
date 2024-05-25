@@ -1,0 +1,26 @@
+name: run-python
+on: [push]
+jobs:
+  run-python:
+    name: execute hello-world python program
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout source
+        uses: actions/checkout@v1
+      - name: setup python
+        uses: actions/setup-python@v4
+ 	with:
+          python-version: '3.10'
+      - name: run hello-world
+        run: python hello.py 
+  upload-artifact:
+     name: upload artifact to storage
+     runs-on: ubuntu-latest
+     needs: [run-python]
+     steps:
+       - name: upload artifact
+         uses: actions/upload-artifact@v1.0.0
+         with:
+           name: hello-file
+           path: ./hello
+    
